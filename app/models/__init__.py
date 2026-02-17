@@ -2,7 +2,6 @@ from app import db
 from datetime import datetime
 
 class Project(db.Model):
-    """A project groups related tasks together."""
     __tablename__ = "projects"
 
     id          = db.Column(db.Integer, primary_key=True)
@@ -11,7 +10,6 @@ class Project(db.Model):
     created_at  = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at  = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
-    # Relationship — access project.tasks to get all tasks
     tasks = db.relationship('Task', backref='project', lazy=True, cascade='all, delete-orphan')
 
     def to_dict(self):
@@ -25,7 +23,6 @@ class Project(db.Model):
 
 
 class Task(db.Model):
-    """An individual task that belongs to a project."""
     __tablename__ = "tasks"
 
     id          = db.Column(db.Integer, primary_key=True)

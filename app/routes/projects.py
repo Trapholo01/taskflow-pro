@@ -4,19 +4,16 @@ from app.models import Project
 
 projects_bp = Blueprint('projects', __name__)
 
-# ── GET all projects ─────────────────────────────────────────────
 @projects_bp.route('/projects', methods=['GET'])
 def get_projects():
     projects = Project.query.order_by(Project.created_at.desc()).all()
     return jsonify([p.to_dict() for p in projects]), 200
 
-# ── GET single project ───────────────────────────────────────────
 @projects_bp.route('/projects/<int:id>', methods=['GET'])
 def get_project(id):
     project = Project.query.get_or_404(id)
     return jsonify(project.to_dict()), 200
 
-# ── CREATE project ───────────────────────────────────────────────
 @projects_bp.route('/projects', methods=['POST'])
 def create_project():
     data = request.get_json()
@@ -27,7 +24,6 @@ def create_project():
     db.session.commit()
     return jsonify(project.to_dict()), 201
 
-# ── UPDATE project ───────────────────────────────────────────────
 @projects_bp.route('/projects/<int:id>', methods=['PUT'])
 def update_project(id):
     project = Project.query.get_or_404(id)
@@ -37,7 +33,6 @@ def update_project(id):
     db.session.commit()
     return jsonify(project.to_dict()), 200
 
-# ── DELETE project ───────────────────────────────────────────────
 @projects_bp.route('/projects/<int:id>', methods=['DELETE'])
 def delete_project(id):
     project = Project.query.get_or_404(id)

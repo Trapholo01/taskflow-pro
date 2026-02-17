@@ -5,18 +5,16 @@ from datetime import date
 
 tasks_bp = Blueprint('tasks', __name__)
 
-# ── GET tasks for a project ──────────────────────────────────────
 @tasks_bp.route('/projects/<int:project_id>/tasks', methods=['GET'])
 def get_tasks(project_id):
-    status   = request.args.get('status')    # optional filter
-    priority = request.args.get('priority')  # optional filter
+    status   = request.args.get('status')
+    priority = request.args.get('priority')
     query = Task.query.filter_by(project_id=project_id)
     if status:   query = query.filter_by(status=status)
     if priority: query = query.filter_by(priority=priority)
     tasks = query.order_by(Task.due_date.asc()).all()
     return jsonify([t.to_dict() for t in tasks]), 200
 
-# ── CREATE task ──────────────────────────────────────────────────
 @tasks_bp.route('/projects/<int:project_id>/tasks', methods=['POST'])
 def create_task(project_id):
     data = request.get_json()
@@ -24,7 +22,7 @@ def create_task(project_id):
         return jsonify({'error': 'title is required'}), 400
     due = None
     if data.get('due_date'):
-        due = date.fromisoformat(data['due_date'])  # expects YYYY-MM-DD
+        due = date.fromisoformat(data['due_date'])
     task = Task(
         project_id=project_id,
         title=data['title'],
@@ -37,7 +35,6 @@ def create_task(project_id):
     db.session.commit()
     return jsonify(task.to_dict()), 201
 
-# ── UPDATE task ──────────────────────────────────────────────────
 @tasks_bp.route('/tasks/<int:id>', methods=['PUT'])
 def update_task(id):
     task = Task.query.get_or_404(id)
@@ -49,7 +46,6 @@ def update_task(id):
     db.session.commit()
     return jsonify(task.to_dict()), 200
 
-# ── DELETE task ──────────────────────────────────────────────────
 @tasks_bp.route('/tasks/<int:id>', methods=['DELETE'])
 def delete_task(id):
     task = Task.query.get_or_404(id)
