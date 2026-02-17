@@ -205,3 +205,21 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Environment variables — NEVER commit real .env files
+.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Terraform state — contains sensitive data
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.backup
+terraform/.terraform.lock.hcl
+
+# macOS
+.DS_Store
