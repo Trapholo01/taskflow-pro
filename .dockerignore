@@ -1,0 +1,13 @@
+.git/
+.env
+venv/
+__pycache__/
+*.pyc
+*.pyo
+docs/
+terraform/
+.github/
+README.md
+*.md
+.dockerignore
+gunicorn.ctl
