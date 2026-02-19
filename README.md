@@ -266,7 +266,7 @@ MIT License — see [LICENSE](LICENSE) file for details.
 
 ## 👤 Author
 
-**Trapholo Moagi**
+**Thato Rapholo**
 - GitHub: [@Trapholo01](https://github.com/Trapholo01)
 - Docker Hub: [tayraps](https://hub.docker.com/u/tayraps)
 
