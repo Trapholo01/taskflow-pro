@@ -2,7 +2,7 @@
 
 > A production-grade, containerized task management REST API built with Flask, PostgreSQL, Docker, and AWS.
 
-[![Docker Hub](https://img.shields.io/badge/docker-tayraps%2Ftaskflow--pro-blue)](https://hub.docker.com/r/tayraps/taskflow-pro)
+[![Docker Hub](https://img.shields.io/badge/docker-tayraps%2Ftaskflow--pro-blue)](https://hub.docker.com/repository/docker/tayraps/taskflow-pro/general)
 [![GitHub](https://img.shields.io/badge/github-Trapholo01%2Ftaskflow--pro-black)](https://github.com/Trapholo01/taskflow-pro)
 
 ---
@@ -266,7 +266,7 @@ MIT License — see [LICENSE](LICENSE) file for details.
 
 ## 👤 Author
 
-**Trapholo Moagi**
+**Thato Rapholo**
 - GitHub: [@Trapholo01](https://github.com/Trapholo01)
 - Docker Hub: [tayraps](https://hub.docker.com/u/tayraps)
 
